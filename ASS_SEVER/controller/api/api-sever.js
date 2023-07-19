@@ -74,6 +74,7 @@ exports.listProduct = async (req,res,next) =>{
             listObject.msg = error.message
         }
     }
+    console.log(listProducts);
     res.json(listObject)
 }
 exports.seachProduct = async (req,res,next) =>{

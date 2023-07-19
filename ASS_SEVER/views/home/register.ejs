@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/styledangnhap.css">
+</head>
+
+<body>
+    <div class="maunen">
+        <div class="header container-fluid  d-flex justify-content-around mt-4">
+            <div class="d-flex flex-row">
+                <div> <img src="\images\logo.png" alt=""></div>
+                <h2 class="text-white align-content-center pt-1">SERVER</h2>
+            </div>
+            <div class="d-flex flex-row pe-4  ">
+                <a href="/" style="text-decoration: underline !important;" class="me-2">Login</a>
+                <div class="gachngang"></div>
+                <div class="text-center ms-3"> <img class="align-self-center " src="\images\iconsetting.png" alt=""></div>
+            </div>
+
+        </div>
+        <div class="">
+            <div class="container bg-black formInput p-5 mt-5 border border-primary rounded-4 ">
+                <form action="" method="post">
+                    <h4 class="titlelogin">Register</h4>
+                    <div class=" input-field mt-5">
+
+                        <input type="text" name="userName" class=" bg-input" required spellcheck="false"
+                            id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <label>Username</label>
+                    </div>
+                    <div class=" input-field mt-4">
+
+                        <input type="text" name="email" class=" bg-input" required spellcheck="false"
+                            id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <label>Email</label>
+                    </div>
+                    <div class=" input-field mt-4">
+
+                        <input type="password" name="passWrd" class="" required id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                        <label>Password</label>
+                    </div>
+                    <div class="input-field mt-4">
+                        <input type="password"  class="" required id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                        <label>Re-Password</label>
+                    </div>
+                    <div class="input-field mt-4">
+                        <input type="text" name="vaiTro" hidden value="Người dùng"  required id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                        
+                    </div>
+
+
+                   
+                    <button class="button mt-4" type="submit">Register</button>
+
+
+                </form>
+                <div class="mt-5">
+                    <h3 class="text-light" style="text-align: center;">
+                        <%= msg %>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const button = document.querySelector(".button");
+
+        button.addEventListener("click", (e) => {
+            e.preventDefault;
+            button.classList.add("animate");
+            setTimeout(() => {
+                button.classList.remove("animate");
+            }, 600);
+        });
+    </script>
+</body>
+
+</html>

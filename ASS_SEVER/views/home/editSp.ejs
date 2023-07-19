@@ -1,0 +1,56 @@
+<%- include('../inc/top') %>
+
+  <form method="POST" action="" enctype="multipart/form-data" class="container mt-3">
+    
+    <h1 class="text" style="text-align: center;">Sửa sản phẩm</h1>
+    <div class="mb-3 d-flex flex-row justify-content-center">
+      <div> <p>Ảnh cũ</p> <img src="\upload\<%= product.anhsanpham %>" alt="" width="100px" height="100px"></div>
+      <div class="ms-4"> <label for="exampleInputEmail1" class="form-label">Sửa</label>
+        <input type="file" name="anhsanpham" class="form-control" id="exampleInputEmail1">
+        <input type="input" value="<%= product.anhsanpham %>" hidden name="anhsanphamcu"  class="form-control"
+          id="exampleInputEmail1">
+      </div>
+
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Tên sản phẩm</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" value="<%= product.tenSanPham %>"
+        name="tenSanPham" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="selectChonLoai" class="form-label">Loại sản phẩm</label>
+      <select class="form-select" aria-label="Default select example" id="selectChonLoai" name="loaiSanPham">
+        <% listTL.forEach( row=> {
+          let selected = '';// xác định thể loại đã chọn của sp
+          if(String( row._id ) == String(product.id_loai) ){
+          selected = ' selected ';
+          }
+
+          %>
+          <option <%=selected %> value="<%= row._id %>" > <%= row.name %>
+          </option>
+          <% }) %>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Giá tiền</label>
+      <input type="number" class="form-control" value="<%= product.giaTien %>" name="giaTien" id="exampleInputEmail1"
+        aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Số lượng</label>
+      <input type="number" class="form-control" value="<%= product.soLuong %>" name="soLuong" id="exampleInputEmail1"
+        aria-describedby="emailHelp">
+    </div>
+    <div class="form-floating">
+      <textarea class="form-control" name="moTa" placeholder="Leave a comment here"
+        id="floatingTextarea"><%= product.moTa %></textarea>
+      <label for="floatingTextarea">Mô tả</label>
+    </div>
+    <div class="modal-footer mt-1">
+     <a href="/home/home"> <button type="button" class="btn btn-secondary me-5" data-bs-dismiss="modal">Thoát</button></a>
+      <button type="submit" class="btn btn-primary">Lưu</button>
+    </div>
+    <h6  style="text-align: center;"> <%= msg %> </h6>
+  </form>
+  <%- include('../inc/bottom') %>

@@ -1,0 +1,117 @@
+<%- include('../inc/top') %>
+  <h2 class="text">Danh sách người dùng</h2>
+  <button type="button" class="btn btn-primary btnThemMoi bg-success float-end  me-4 " style="width: 125px; height: 40px;" data-bs-toggle="modal"
+    data-bs-target="#exampleModalToggle2">Thêm mới user</button>
+  <form action="" class="d-flex flex-row mb-3 w-25  float-end " method="POST"  >
+    <input type="text" required  name="timKiem" class="form-control w-50 ms-5" placeholder="Tìm kiếm...">
+    <button type="submit" class="btn btn-primary ms-4">Tìm kiếm</button>
+  </form>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" class="changeThColor ps-4">Username</th>
+        <th scope="col">Email</th>
+        <th scope="col">Vai trò</th>
+        <th scope="col">Ngày tạo</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% listUser.forEach(item=> { %>
+      </tr>
+      <td class="ps-4"><%= item.userName  %></td>
+      <td><%= item.email  %></td>
+      <td><%= item.vaiTro  %></td>
+      <td> <% 
+        %>
+        <%= item.ngayTao  %></td>
+      <td> 
+        <a href="/home/<%= item._id %>/editUser"> <i  class='bx bx-edit-alt icon colorIcon bx-md'> </i></a>
+        <a data-bs-toggle="modal" data-bs-target="#deleteModal" href="" data-id="<%= item._id %>">
+          <i class='bx bx-trash-alt icon bx-md text-danger'></i>
+        </a>
+      </td>
+      <% }) %>
+    </tbody>
+  </table>
+  <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+    tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <form action="" method="POST">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Thêm mới user</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Username</label>
+              <input type="text" name="userName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email</label>
+              <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Password</label>
+              <input type="password" name="passWord" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="">Vai Trò</label>
+              <select name="vaiTro" id="" class="form-select">
+                <option value="Admin">Admin</option>
+                <option value="Người dùng">Người dùng</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
+            <button type="submit" class="btn btn-primary">Lưu</button>
+          </div>
+        </form>
+        </div>
+    </div>
+  </div>
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Xóa User</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h1>Bạn chắc chắc muốn xóa user này</h1>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+          <button type="button" id="btnDeleteProduct" class="btn btn-primary bg-danger">Xác nhận</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p
+  class="text-danger" style="text-align: center;"> <%= msg %></p>
+   <!-- hide from delete -->
+   <form method="POST" name="delete-form" ></form>
+   <script>
+     var productId; 
+     var deleteForm = document.forms['delete-form']
+     const deleteModal = document.getElementById('deleteModal')
+     const btnDeleteProduct = document.getElementById('btnDeleteProduct');
+     deleteModal.addEventListener('show.bs.modal', event => {
+       
+       const button = event.relatedTarget
+      
+       const id = button.getAttribute('data-id')
+       productId =id;
+       console.log(id);
+ 
+     })
+     btnDeleteProduct.onclick = function (){
+         
+         deleteForm.action="/home/"+productId+"/deleteUser";
+         deleteForm.submit();  
+       }
+   </script>
+  <%- include('../inc/bottom') %>

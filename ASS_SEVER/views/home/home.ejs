@@ -1,0 +1,224 @@
+<%- include('../inc/top') %>
+
+
+</div>
+
+
+  <div class="text">Trang chủ</div>
+  <div class="text">
+    <p>Danh sách sản phẩm</p>
+    <div class="float-end"><button type="button" class="btn btn-primary btnThemMoi" data-bs-toggle="modal"
+        data-bs-target="#exampleModal">Thêm mới</button>
+     
+    </div>
+  </div>
+  </div>
+  <div class=" row ">
+    <form action="" method="POST">
+    <div class=" d-flex flex-row mb-3">
+     
+      <div class="ms-3 ">
+        <p>Loại</p>
+        <select class="form-select" aria-label="Default select example" id="selectChonLoai" name="locLoaiSanPham">
+          <option value="all">Tất cả</option>
+          <% listTL.forEach( row=> { %>
+            <option value="<%= row._id %>">
+              <%= row.name %>
+            </option>
+            <% }) %>
+        
+        </select>
+       
+      </div>
+      <div><br>
+        <button type="submit" class="btn btn-primary ms-3 h-50 " style="width: 150px; margin-top: 15px;">Lọc</button></div>
+    </div>
+  </form>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" class="changeThColor ps-3">Sản phẩm 
+            <a href="?_sort&column=tenSanPham&type=<%= type %>"><i class="<%= icon %>"></i></a>
+        </th>
+        <th scope="col">Loại  <a href="?_sort&column=loai&type=<%= type %>"><i class="<%= icon %>"></i></a></th>
+        <th scope="col">Giá tiền  <a href="?_sort&column=giaTien&type=<%= type %>"><i class="<%= icon %>"></i></a></th>
+       
+        <th scope="col">Số lượng  <a href="?_sort&column=soLuong&type=<%= type %>"><i class="<%= icon %>"></i></a></th>
+        <th scope="col">Mô tả</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% listSanPham.forEach(item=> { %>
+      </tr>
+      <td class="changeThColor ps-4">
+        <img src="\upload\<%= item.anhsanpham %>" alt="" width="50px" height="50px" />
+        <span>
+          <%= item.tenSanPham %>
+        </span>
+      </td>
+      <td>
+        <%= item.id_loai.name %>
+      </td>
+      <td>
+        <%= item.giaTien %>
+       
+      </td>
+     
+      <td>
+        <%= item.soLuong %>
+         
+      </td>
+      <td>
+        <%= item.moTa %>
+      </td>
+      <td>
+        <a href="/home/<%= item._id %>/edit">
+          <i class='bx bx-edit-alt icon colorIcon bx-md'></i>
+        </a>
+        <a data-bs-toggle="modal" data-bs-target="#deleteModal" href="" data-id="<%= item._id %>">
+          <i class='bx bx-trash-alt icon bx-md text-danger'></i>
+        </a>
+      </td>
+      <td> <button type="button" class="btn btn-primary btnTd" 
+          ><a class="link-underline link-underline-opacity-0"  href="/home/<%= item._id %>/chiTiet">Chi tiết</a></button></td>
+      <% }) %>
+
+    </tbody>
+  </table>
+  <nav aria-label="Page navigation example" class="float-end  me-4">
+    <ul class="pagination justify-content-center">
+      <li class="page-item disabled">
+        <a class="page-link">Sau</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="/home/home?page=1">1</a></li>
+      <li class="page-item"><a class="page-link" href="/home/home?page=2">2</a></li>
+      <li class="page-item"><a class="page-link" href="/home/home?page=3">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="/home/home/plusPage">Trước</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" >
+    <div class="toast-header">
+      <img src="..." class="rounded me-2" alt="...">
+      <strong class="me-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+       
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm mới sản phẩm</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Link ảnh</label>
+              <input type="file" name="anhsanpham" class="form-control" id="exampleInputEmail1" required>
+
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Tên sản phẩm</label>
+              <input type="text" class="form-control input-name-prodcut" id="exampleInputEmail1" name="tenSanPham" required
+                aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="selectChonLoai" class="form-label">Loại sản phẩm</label>
+              <select class="form-select" aria-label="Default select example" id="selectChonLoai" name="loaiSanPham">
+                <% listTL.forEach( row=> { %>
+                  <option value="<%= row._id %>">
+                    <%= row.name %>
+                  </option>
+                  <% }) %>
+
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label" >Giá tiền</label>
+              <input type="number" class="form-control" name="giaTien" id="exampleInputEmail1" required
+                aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Số lượng</label>
+              <input type="number" class="form-control" name="soLuong" id="exampleInputEmail1" required
+                aria-describedby="emailHelp">
+            </div>
+            <div class="form-floating">
+              <textarea class="form-control" name="moTa" placeholder="Leave a comment here" required
+                id="floatingTextarea"></textarea>
+              <label for="floatingTextarea">Mô tả</label>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
+              <button type="submit" class="btn btn-primary btnLuuSanPham">Lưu</button>
+            </div>
+          </form>
+          <div><h3> <%= msg %></h3></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="chitietsanpham" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+    tabindex="-1">
+    
+  </div>
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Xóa sản phẩm</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h1>Bạn chắc chắc muốn xóa sản phẩm này</h1>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Hủy</button>
+          <button type="button" id="btnDeleteProduct" class="btn btn-outline-danger ">Xác nhận</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- hide from delete -->
+  <form method="POST" name="delete-form" ></form>
+  <script>
+    var productId; 
+    var deleteForm = document.forms['delete-form']
+    const deleteModal = document.getElementById('deleteModal')
+    const btnDeleteProduct = document.getElementById('btnDeleteProduct');
+    deleteModal.addEventListener('show.bs.modal', event => {
+      
+      const button = event.relatedTarget
+     
+      const id = button.getAttribute('data-id')
+      productId =id;
+      console.log(id);
+
+    })
+    btnDeleteProduct.onclick = function (){
+        
+        deleteForm.action='/home/' +productId;
+        deleteForm.submit();  
+      }
+  </script>
+
+
+
+  <%- include('../inc/bottom') %>
+    

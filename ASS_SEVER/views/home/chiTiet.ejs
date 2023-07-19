@@ -1,0 +1,26 @@
+<%- include('../inc/top') %>
+
+    <div class=" d-flex flex-column justify-content-center align-items-center ">
+        <div class=" mt-4 border border-3 border border-info d-flex flex-column justify-content-center fs-5 text"
+            style="width: 400px; height: 600px;">
+            <div style="text-align: center;" class="mb-3"><img class="rounded-circle"
+                    src="/upload/<%= product.anhsanpham %>" alt="" width="100px" height="100px"></div>
+            <p>Tên sản phẩm :<span class="text-dark">
+                    <%= product.tenSanPham %>
+                </span></p>
+            <p>Loại sản phẩm :<span class="text-dark">
+                    <%= product.id_loai.name %>
+                </span></p>
+            <p>Giá Tiền :<span class="text-dark">
+                    <%= product.giaTien %>
+                </span></p>
+            <p>Số Lượng :<span class="text-dark">
+                    <%= product.soLuong %>
+                </span></p>
+            <p>Mô tả :<span class="text-dark">
+                    <%= product.moTa %>
+                </span></p>
+        </div>
+        <a href="/home/home"> <button type="button" class="btn btn-outline-secondary mt-3">Thoát</button></a>
+    </div>
+    <%- include('../inc/bottom') %>

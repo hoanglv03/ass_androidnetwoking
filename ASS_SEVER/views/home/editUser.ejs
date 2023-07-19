@@ -1,0 +1,39 @@
+<%- include('../inc/top') %>
+
+<div class="container mt-5">
+    <div class="modal-dialog modal-dialog-centered ">
+    
+        <div class="modal-content">
+          <form action="" method="POST">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 text" id="exampleModalToggleLabel2">Chỉnh sửa user</h1>
+           
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Username</label>
+              <input type="text" name="userName" value="<%= user.userName %>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Password</label>
+              <input type="password" name="passWord" value="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="">Vai Trò</label>
+              <select name="vaiTro" id="" class="form-select">
+                <option value="Người dùng">Người dùng</option>
+                <option value="Admin">Admin</option>
+              
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+           <a href="/home/add"> <button type="button" class="btn btn-secondary me-4" data-bs-dismiss="modal">Thoát</button></a>
+            <button type="submit" class="btn btn-primary">Lưu</button>
+          </div>
+        </form>
+        </div>
+     
+    </div>
+</div>
+<%- include('../inc/bottom') %>
