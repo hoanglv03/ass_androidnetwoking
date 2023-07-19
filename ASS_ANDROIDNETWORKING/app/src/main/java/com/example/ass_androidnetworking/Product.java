@@ -1,26 +1,26 @@
 package com.example.ass_androidnetworking;
 
 public class Product {
-    int _id;
+    String _id;
     String tenSanPham;
     String giaTien;
-    String soLUong;
+    String soLuong;
 
     public Product() {
     }
 
-    public Product(int _id, String tenSanPham, String giaTien, String soLUong) {
+    public Product(String _id, String tenSanPham, String giaTien, String soLuong) {
         this._id = _id;
         this.tenSanPham = tenSanPham;
         this.giaTien = giaTien;
-        this.soLUong = soLUong;
+        this.soLuong = soLuong;
     }
 
-    public int get_id() {
+    public String get_id() {
         return _id;
     }
 
-    public void set_id(int _id) {
+    public void set_id(String _id) {
         this._id = _id;
     }
 
@@ -40,11 +40,11 @@ public class Product {
         this.giaTien = giaTien;
     }
 
-    public String getSoLUong() {
-        return soLUong;
+    public String getSoLuong() {
+        return soLuong;
     }
 
-    public void setSoLUong(String soLUong) {
-        this.soLUong = soLUong;
+    public void setSoLuong(String soLuong) {
+        this.soLuong = soLuong;
     }
 }

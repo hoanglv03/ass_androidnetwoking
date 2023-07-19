@@ -74,7 +74,7 @@ exports.listProduct = async (req,res,next) =>{
             listObject.msg = error.message
         }
     }
-    console.log(listProducts);
+   
     res.json(listObject)
 }
 exports.seachProduct = async (req,res,next) =>{
@@ -95,13 +95,12 @@ exports.seachProduct = async (req,res,next) =>{
 }
 exports.addProduct = async (req,res,next) =>{
     let newProducts = new Product.spMododel();
-    newProducts.anhsanpham = req.body.anhsanpham;
+   // newProducts.anhsanpham = req.body.anhsanpham;
     newProducts.tenSanPham = req.body.tenSanPham;
-    newProducts.id_loai = req.body.loaiSanPham;
+    //newProducts.id_loai = req.body.loaiSanPham;
     newProducts.giaTien = req.body.giaTien;
     newProducts.soLuong = req.body.soLuong;
-    newProducts.moTa = req.body.moTa;
-
+    //newProducts.moTa = req.body.moTa;
     console.log(req.body);
     try {
       // di chuyển file từ thư mục  tmp sang public /upload
