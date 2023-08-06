@@ -5,7 +5,7 @@ var mdw = require('../middlewares/api.auth')
 //Product
 router.get('/listProduct'   ,apiSever.listProduct);
 router.post('/addProduct',apiSever.addProduct);
-router.post('/seachProduct',apiSever.seachProduct);
+router.post('/searchProduct',apiSever.seachProduct);
 router.put('/updateProduct/:id',apiSever.updateProduct);
 router.delete('/deleteProduct/:id',apiSever.deleteProduct);
 
@@ -24,6 +24,7 @@ router.get('/listUser',apiSever.listUser);
 router.post('/addUser',apiSever.addUser);
 router.put('/updateUser/:id',apiSever.updateUser);
 router.delete('/deleteUser/:id',apiSever.deleteUser);
+router.put('/changePassword/:id',apiSever.changePassword);
 //Login and register user
 
 router.post('/login',apiSever.login)

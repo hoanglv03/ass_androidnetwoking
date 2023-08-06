@@ -13,11 +13,13 @@
         android:id="@+id/edPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="number"
         android:hint="Giá sản phẩm"/>
     <EditText
         android:id="@+id/edSoLuong"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="number"
         android:hint="Số lượng"/>
     <Button
         android:id="@+id/btnAdd"

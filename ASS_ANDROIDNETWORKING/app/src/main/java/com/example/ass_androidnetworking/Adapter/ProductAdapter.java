@@ -1,4 +1,4 @@
-package com.example.ass_androidnetworking;
+package com.example.ass_androidnetworking.Adapter;
 
 import android.content.Context;
 import android.view.Gravity;
@@ -12,21 +12,25 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.ass_androidnetworking.DTO.Product;
+import com.example.ass_androidnetworking.Fragment.ProductFragment;
+import com.example.ass_androidnetworking.R;
+
 import java.util.ArrayList;
 
 public class ProductAdapter extends ArrayAdapter<Product> {
     private ArrayList<Product> listProduct;
     Context mContext;
-    MainActivity mainActivity;
+    ProductFragment productFragment;
     private static class ViewHolder{
         TextView tvTenSanPham,tvSoLuong,tvGia;
         ImageView edit,delete;
     }
-    public ProductAdapter(ArrayList<Product> listProduct, Context context,MainActivity mainActivity) {
+    public ProductAdapter(ArrayList<Product> listProduct, Context context, ProductFragment productFragment) {
         super(context, R.layout.item_product,listProduct);
         this.listProduct = listProduct;
         this.mContext = context;
-        this.mainActivity = mainActivity;
+        this.productFragment = productFragment;
     }
 
     @NonNull
@@ -47,19 +51,19 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         }else{
             viewHolder =(ViewHolder) convertView.getTag();
         }
-        viewHolder.tvSoLuong.setText("Số lượng " + product.soLuong);
-        viewHolder.tvGia.setText("Giá " + product.giaTien);
-        viewHolder.tvTenSanPham.setText("Tên sản phẩm " + product.tenSanPham);
+        viewHolder.tvSoLuong.setText("Số lượng " + product.getSoLuong());
+        viewHolder.tvGia.setText("Giá " + product.getGiaTien());
+        viewHolder.tvTenSanPham.setText("Tên sản phẩm " + product.getTenSanPham());
         viewHolder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainActivity.showDialogEdit(mContext, Gravity.CENTER,product,position);
+                productFragment.showDialogEdit(mContext, Gravity.CENTER,product,position);
             }
         });
         viewHolder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainActivity.deleteProduct(mContext,product,position);
+                productFragment.deleteProduct(mContext,product,position);
             }
         });
         return convertView;

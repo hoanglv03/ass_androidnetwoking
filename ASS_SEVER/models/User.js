@@ -27,17 +27,21 @@ account.methods.generateAuthToken = async function () {
     return token
  }
 // dùng cho đăng nhập
-account.statics.findByCredentials = async (username, passwd) => {
-    console.log(username,passwd);
-    const user = await accountModel.findOne({userName:username})
-    if (!user) {
-        throw new Error({error: 'Không tồn tại user'})
+account.statics.findByCredentials = async (email, passwd) => {
+    console.log(email,passwd);
+    const users = await accountModel.findOne({email:email})
+    let result = '';
+    if (!users) {
+        result = 'failure'
+        return {users,message:'Sai thông tin đăng nhập',result}
     }
-    const isPasswordMatch = await bcrypt.compare(passwd, user.passWord)
+    const isPasswordMatch = await bcrypt.compare(passwd, users.passWord)
     if (!isPasswordMatch) {
-        throw new Error({error: 'Sai password'})
+        result = 'failure'
+        return {users,message:'Sai mật khẩu',result}
     }
-    return user
+    result = 'success'
+    return {users,message:'Đăng nhập thành công',result}
  }
  
 

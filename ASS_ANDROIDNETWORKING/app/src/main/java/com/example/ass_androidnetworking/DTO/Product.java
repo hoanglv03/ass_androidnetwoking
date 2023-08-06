@@ -1,12 +1,23 @@
-package com.example.ass_androidnetworking;
+package com.example.ass_androidnetworking.DTO;
+
+import com.google.gson.annotations.SerializedName;
 
 public class Product {
     String _id;
     String tenSanPham;
     String giaTien;
     String soLuong;
-
+    @SerializedName("avt")
+    String avatar;
     public Product() {
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public Product(String _id, String tenSanPham, String giaTien, String soLuong) {

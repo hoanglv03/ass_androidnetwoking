@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Sản phẩm"
+        android:id="@+id/menu_product"
+        android:icon="@drawable/icon_product"/>
+    <item
+        android:title="Hồ sơ"
+        android:id="@+id/menu_profile"
+        android:icon="@drawable/icon_profile"/>
+</menu>
